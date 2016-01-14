@@ -1,23 +1,49 @@
+
+
+Tasks = new Mongo.Collection("taxquestion");
+
+
+
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  // This code only runs on the client
+
+
+
+
+  Template.body.events({
+
+    "submit .questions": function (event) {
+
+      // Prevent default browser form submit
+
+      event.preventDefault();
+
+      console.log("handle event");
+
+      // Get value from form element
+      var question = document.getElementById("question").value;
+      var you = document.getElementById("you").value;
+      var email = document.getElementById("email").value;
+
+      console.log(question + " " + you + " "+ email);
+
+      Tasks.insert({
+
+        question: question,
+        you: you,
+        email: email,
+
+        createdAt: new Date() // current time
+
+      });
+
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
 }
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}
+
+
+
+

@@ -8,38 +8,36 @@
 
 <body>
 
-<div class="container">
+<div id="container">
 
+    <div id="header">
     <header>
 
         <h1>Tax Impact Answered in Real Time</h1>
         <h3>Ever wondered the impact of what you did and you will do on your tax? We get answers!</h3>
 
-
-
-
-
-
     </header>
+    </div>
 
+    <div id="body">
     <form class="questions">
 
         <p>Please describe your questions below:</p>
-        <textarea class="scrollabletextbox" name="Question">
+        <textarea class="scrollabletextbox" name="Question" id="question">
         </textarea>
 
         <br>
         <br>
 
         <p>Please tell us about you in your owns words(it is optional, but if you do, it will make the answer more accurate):</p>
-        <textarea class="scrollabletextbox" name="You">
+        <textarea class="scrollabletextbox" name="You" id="you">
         </textarea>
         <br>
         <br>
 
 
-        <p>Please let us know where to send the answer</p>
-        <input type="text" name="email" id="q30">
+        <p>Please let us know where to send the answer (your email):</p>
+        <input type="text" name="email" id="email">
 
         <br>
         <br>
@@ -47,16 +45,21 @@
 
         <input type="submit" value="Submit" onclick="alert('Your response has been submitted. You can now close the window. Thank you!')">
 
+        <br>
+        <br>
 
     </form>
+    </div>
+
+    <div id="footer">
+
+
+        <p>Contact information: <a href="mailto:snapmula@gmail.com">snapmula@gmail.com</a>.</p>
+
+    </div>
+
 </div>
 
-
-
-<footer>
-    <p>Posted by: Hege Refsnes</p>
-    <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
-</footer>
 
 </body>
 
