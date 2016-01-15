@@ -38,12 +38,43 @@ if (Meteor.isClient) {
 
       });
 
+      document.getElementById("question").value = "";
+      document.getElementById("you").value = "";
+      document.getElementById("email").value = "";
+
+      Meteor.call('sendEmail',
+          'pwu1024@gmail.com',
+          'snapmula@gmail.com',
+          'Hello from Meteor!',
+          'New data added');
     }
   });
 
 }
 
+if(Meteor.isServer) {
 
+  Meteor.startup( function() {
+    process.env.MAIL_URL = "smtp://postmaster%40sandbox1b58096c2756404bb4c2615318949d29.mailgun.org:2bf08951a287cb75f7efce7574eb5d7b@smtp.mailgun.org:587";
+  });
 
+  Meteor.methods({
+    sendEmail: function (to, from, subject, text) {
+      check([to, from, subject, text], [String]);
+
+      // Let other method calls from the same client start running,
+      // without waiting for the email sending to complete.
+      this.unblock();
+
+      Email.send({
+        to: to,
+        from: from,
+        subject: subject,
+        text: text
+      });
+    }
+  });
+
+}
 
 
